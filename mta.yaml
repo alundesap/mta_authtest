@@ -10,6 +10,8 @@ modules:
    parameters:
      memory: 128MB
      disk: 256M
+   properties:
+     TENANT_HOST_PATTERN: '(.*)'
    requires: 
     - name: mta-authtest-uaa
     - name: js_api
