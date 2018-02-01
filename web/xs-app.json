@@ -1,0 +1,17 @@
+{
+  "welcomeFile": "index.html",
+  "authenticationMethod": "route",
+  "routes": [
+    {
+      "source": "(nodejs\/)(.*)",
+      "destination": "js_be", 
+	  "csrfProtection": false,
+	  "authenticationType": "xsuaa"
+    },
+    {
+      "localDir": "resources",
+      "source": "^/(.*)", 
+	  "authenticationType": "none"
+    }
+  ]
+}

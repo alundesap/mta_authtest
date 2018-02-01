@@ -2,3 +2,36 @@ ID: mta_authtest
 _schema-version: '2.0'
 description: Multi-Target Application with link that requires XSUAA
 version: 0.0.1
+
+modules:
+ - name: web
+   type: html5
+   path: web
+   parameters:
+     memory: 128MB
+     disk: 256M
+   requires: 
+    - name: mta-authtest-uaa
+    - name: js_api
+      group: destinations
+      properties:
+        name: js_be
+        url: ~{url}
+        forwardAuthToken: true
+
+ - name: js
+   type: nodejs
+   path: js
+   parameters:
+     memory: 128MB
+     disk: 256M
+   requires: 
+    - name: mta-authtest-uaa
+   provides:
+    - name: js_api
+      properties:
+         url: ${default-url}
+
+resources:
+ - name: mta-authtest-uaa
+   type: com.sap.xs.uaa  
